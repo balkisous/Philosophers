@@ -1,14 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/13 23:02:52 by ddecourt          #+#    #+#              #
-#    Updated: 2022/02/16 12:06:36 by bben-yaa         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 SRCS =	srcs/main.c \
 		srcs/parsing.c \
@@ -17,7 +6,6 @@ SRCS =	srcs/main.c \
 		srcs/philosopher.c \
 		srcs/routine.c \
 		srcs/death.c \
-		#srcs/philo_utils.c \
 
 OBJS = ${SRCS:.c=.o}
 
