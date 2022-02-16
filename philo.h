@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:31:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 11:37:28 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/16 12:11:11 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,13 @@ int			ft_atoi(const char *nptr);
 void		init_time(t_param *param);
 long int	past_time(long int start_time);
 void		ft_usleep(int duration);
+
+//death.c
+int			stop_eating(t_philo *philo);
+int			is_die(t_philo *philo);
+void		is_alive(t_philo *philo);
+int			check_death(t_philo *philo);
+
 
 
 # endif
