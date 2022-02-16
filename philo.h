@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:31:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/15 16:02:22 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/16 11:37:28 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,23 @@ typedef struct s_param
 }				t_param;
 
 //main.c
-
+void		init_philo(t_param *param, t_philo *philo);
+void		destroy_mutex(t_param *param, t_philo *philo);
 
 //parsing.c
+int			is_numeric(char **argv);
+void		init_param(t_param *param, char **argv);
 int			ft_parse_philo(int argc, char **argv, t_param *param);
 
 //philosopher.c
-void	one_philo(t_param *param);
+void	one_philo(t_philo *philo);
+void	*routine(void *ph);
+int		ft_launch_thread(t_philo *philo, int module);
+int		begin_my_philo(t_philo *philo, t_param *param);
+
+//routine.c
+void	execute_routine(t_philo *philo);
+void	print_status(char *action, t_philo *philo);
 
 //atoi.c
 int			ft_atoi(const char *nptr);
