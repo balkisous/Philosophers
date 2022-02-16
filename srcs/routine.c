@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:18:33 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 15:28:20 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:44:57 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,22 @@ void	execute_routine(t_philo *philo)
 	ft_usleep(philo->prm->time_to_sleep);
 	print_status("is thinking", philo);
 }
+//make his days actions
 
 void	print_status(char *action, t_philo *philo)
 {
 	long int	time;
 	int			death;
-	
+
 	pthread_mutex_lock(&philo->prm->mutex_death);
 	death = philo->prm->is_die;
 	pthread_mutex_unlock(&philo->prm->mutex_death);
 	if (death)
 		return ;
 	time = past_time(philo->prm->first_time);
-	if (time > 0 && time <= 2147483647)
-		printf("%ldms Philo %d %s\n", time, philo->id, action);
+	if (time >= 0 && time <= 2147483647)
+	{
+		printf("%ldms %d %s\n", time, philo->id, action);
+	}
 }
+//print his action

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:29:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 15:32:33 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:32:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,45 +49,40 @@ void	destroy_mutex(t_param *param, t_philo *philo)
 	pthread_mutex_destroy(&param->mutex_death);
 	pthread_mutex_destroy(&param->mutex_eat);
 	pthread_mutex_destroy(&param->mutex_write);
-	
 }
 
-/*int	ft_join_thread(t_philo *philo)
+int	ft_join_thread(t_philo *philo)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < philo->prm->nb_philo)
 	{
-		if (pthread_join(philo[i]))
+		pthread_join(philo[i].ph, NULL);
 	}
-}*/
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
-	t_param param;
-	t_philo *philo;
-	int		i;
+	t_param	param;
+	t_philo	*philo;
 
 	if (!ft_parse_philo(argc, argv, &param))
 		return (1);
 	philo = malloc(sizeof(t_philo) * param.nb_philo);
 	if (!philo)
-	{
-		printf("Error, malloc\n");
-		return (0);
-	}
+		return (printf("Error, malloc fail\n"), 1);
 	init_philo(&param, philo);
 	if (param.nb_philo == 1)
+	{
 		one_philo(philo);
+		return (0);
+	}	
 	else
 		begin_my_philo(philo, &param);
-	i = -1;
-	while (++i < param.nb_philo)
-	{
-		if (pthread_join(philo[i].ph, NULL))
-			return (printf("Error, problem encountered when joining threads\n"), 1);
-	}
+	if (ft_join_thread(philo))
+		return (1);
 	destroy_mutex(&param, philo);
 	free(philo);
 	return (0);

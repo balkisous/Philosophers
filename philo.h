@@ -6,12 +6,12 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:31:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 12:11:11 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/16 16:31:56 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PHILOSOPHER_H
-# define PHILOSOPHER_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -26,7 +26,7 @@ typedef struct s_philo
 	pthread_mutex_t	*l_fork;	
 	pthread_mutex_t	r_fork;
 	int				nb_eat;
-	long 			last_eat;
+	long			last_eat;
 	struct s_param	*prm;
 }				t_philo;
 
@@ -42,12 +42,12 @@ typedef struct s_param
 	pthread_mutex_t		mutex_write;	
 	pthread_mutex_t		mutex_eat;
 	pthread_mutex_t		mutex_death;
-		
 }				t_param;
 
 //main.c
 void		init_philo(t_param *param, t_philo *philo);
 void		destroy_mutex(t_param *param, t_philo *philo);
+int			ft_join_thread(t_philo *philo);
 
 //parsing.c
 int			is_numeric(char **argv);
@@ -55,14 +55,14 @@ void		init_param(t_param *param, char **argv);
 int			ft_parse_philo(int argc, char **argv, t_param *param);
 
 //philosopher.c
-void	one_philo(t_philo *philo);
-void	*routine(void *ph);
-int		ft_launch_thread(t_philo *philo, int module);
-int		begin_my_philo(t_philo *philo, t_param *param);
+void		one_philo(t_philo *philo);
+void		*routine(void *ph);
+int			ft_launch_thread(t_philo *philo, int module);
+int			begin_my_philo(t_philo *philo, t_param *param);
 
 //routine.c
-void	execute_routine(t_philo *philo);
-void	print_status(char *action, t_philo *philo);
+void		execute_routine(t_philo *philo);
+void		print_status(char *action, t_philo *philo);
 
 //atoi.c
 int			ft_atoi(const char *nptr);
@@ -78,6 +78,4 @@ int			is_die(t_philo *philo);
 void		is_alive(t_philo *philo);
 int			check_death(t_philo *philo);
 
-
-
-# endif
+#endif
