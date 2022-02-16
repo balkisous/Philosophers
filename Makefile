@@ -6,7 +6,7 @@
 #    By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 23:02:52 by ddecourt          #+#    #+#              #
-#    Updated: 2022/02/16 09:29:36 by bben-yaa         ###   ########.fr        #
+#    Updated: 2022/02/16 12:06:36 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ SRCS =	srcs/main.c \
 		srcs/time.c \
 		srcs/philosopher.c \
 		srcs/routine.c \
+		srcs/death.c \
 		#srcs/philo_utils.c \
-		#srcs/check_dead.c \
 
 OBJS = ${SRCS:.c=.o}
 
