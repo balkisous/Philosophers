@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:29:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/17 09:34:38 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:27:19 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	init_philo(t_param *param, t_philo *philo)
 		pthread_mutex_init(&philo[i].r_fork, NULL);
 		philo[i].prm = param;
 		philo[i].last_eat = 0;
-		philo[i].nb_eat = 0;
+		philo[i].ph_eat = 0;
+		philo[i].done_eat = 0;
 		i++;
 	}
 	i = 0;
@@ -45,7 +46,10 @@ void	destroy_mutex(t_param *param, t_philo *philo)
 
 	i = -1;
 	while (++i < param->nb_philo)
+	{
 		pthread_mutex_destroy(&philo[i].r_fork);
+	}
+	pthread_mutex_destroy(&param->mutex_done);
 	pthread_mutex_destroy(&param->mutex_death);
 	pthread_mutex_destroy(&param->mutex_eat);
 }

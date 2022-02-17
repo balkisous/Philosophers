@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 09:18:33 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/17 09:12:59 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:16:33 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	execute_routine(t_philo *philo)
 		return (return_unlock(philo));
 	pthread_mutex_lock(&philo->prm->mutex_eat);
 	philo->last_eat = past_time(philo->prm->first_time);
-	philo->nb_eat++;
+	philo->ph_eat++;
 	pthread_mutex_unlock(&philo->prm->mutex_eat);
 	if (print_status("is eating", philo))
 		return (return_unlock(philo));
@@ -49,14 +49,18 @@ int	print_status(char *action, t_philo *philo)
 {
 	long int	time;
 	int			death;
+	int			done;
 
 	pthread_mutex_lock(&philo->prm->mutex_death);
 	death = philo->prm->is_die;
 	pthread_mutex_unlock(&philo->prm->mutex_death);
 	if (death)
 		return (1);
+	pthread_mutex_lock(&philo->prm->mutex_done);
+	done = philo->done_eat;
+	pthread_mutex_unlock(&philo->prm->mutex_done);
 	time = past_time(philo->prm->first_time);
-	if (time >= 0 && time <= 2147483647)
+	if (time >= 0 && time <= 2147483647 && done == 0)
 	{
 		printf("%ldms %d %s\n", time, philo->id, action);
 	}

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:47:26 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 16:29:56 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:28:13 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,18 @@ void	is_alive(t_philo *philo)
 int	check_death(t_philo *philo)
 {
 	int	i;
-	int	everyone;
 
 	i = -1;
-	everyone = 0;
 	while (++i < philo->prm->nb_philo)
 	{
 		pthread_mutex_lock(&philo->prm->mutex_eat);
-		if (philo[i].nb_eat == philo->prm->nb_eat)
+		if (philo[i].ph_eat == philo->prm->nb_eat && philo[i].done_eat == 0)
 		{
-			everyone++;
-			if (everyone == philo->prm->nb_philo)
+			pthread_mutex_lock(&philo->prm->mutex_done);
+			philo[i].done_eat = 1;
+			pthread_mutex_unlock(&philo->prm->mutex_done);
+			philo->prm->everyone++;
+			if (philo->prm->everyone == philo->prm->nb_philo)
 				return (stop_eating(philo));
 		}
 		if (past_time(philo->prm->first_time) - philo[i].last_eat \

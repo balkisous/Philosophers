@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:31:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/17 09:28:34 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:16:56 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ typedef struct s_philo
 	pthread_t		ph;
 	pthread_mutex_t	*l_fork;	
 	pthread_mutex_t	r_fork;
-	int				nb_eat;
+	int				ph_eat;
 	long			last_eat;
+	int				done_eat;
 	struct s_param	*prm;
 }				t_philo;
 
@@ -39,6 +40,8 @@ typedef struct s_param
 	long				first_time;
 	int					nb_eat;
 	int					is_die;
+	int					everyone;
+	pthread_mutex_t		mutex_done;
 	pthread_mutex_t		mutex_eat;
 	pthread_mutex_t		mutex_death;
 }				t_param;

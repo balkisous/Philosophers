@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 09:56:46 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/17 09:28:42 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:29:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	is_numeric(char **argv)
 	{
 		while (argv[j][i])
 		{
-			if (!(argv[j][i] >= '0' && argv[j][i] <= '9'))
+			if (!((argv[j][i] >= '0' && argv[j][i] <= '9') \
+				|| argv[j][i] == '-'))
 				return (0);
 			i++;
 		}
@@ -45,6 +46,8 @@ void	init_param(t_param *param, char **argv)
 	else
 		param->nb_eat = 2147483647;
 	param->is_die = 0;
+	param->everyone = 0;
+	pthread_mutex_init(&(param->mutex_done), NULL);
 	pthread_mutex_init(&(param->mutex_eat), NULL);
 	pthread_mutex_init(&(param->mutex_death), NULL);
 }
@@ -61,7 +64,7 @@ int	ft_parse_philo(int argc, char **argv, t_param *param)
 		return (printf("Error, too many philos\n"), 0);
 	if (param->nb_philo <= 0 || param->time_to_die <= 0 || \
 		param->time_to_eat <= 0 || param->time_to_sleep <= 0 || \
-		(argv[5] && param->nb_eat == 0))
+		(argv[5] && param->nb_eat <= 0))
 		return (printf("Error, arguments must be positive\n"), 0);
 	return (1);
 }
