@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:31:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/17 09:01:22 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:28:34 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_param
 	long				first_time;
 	int					nb_eat;
 	int					is_die;
-	pthread_mutex_t		mutex_write;	
 	pthread_mutex_t		mutex_eat;
 	pthread_mutex_t		mutex_death;
 }				t_param;

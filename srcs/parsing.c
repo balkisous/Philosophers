@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 09:56:46 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 16:32:40 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:28:42 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	init_param(t_param *param, char **argv)
 	else
 		param->nb_eat = 2147483647;
 	param->is_die = 0;
-	pthread_mutex_init(&(param->mutex_write), NULL);
 	pthread_mutex_init(&(param->mutex_eat), NULL);
 	pthread_mutex_init(&(param->mutex_death), NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:29:58 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 16:32:21 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:34:38 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	destroy_mutex(t_param *param, t_philo *philo)
 		pthread_mutex_destroy(&philo[i].r_fork);
 	pthread_mutex_destroy(&param->mutex_death);
 	pthread_mutex_destroy(&param->mutex_eat);
-	pthread_mutex_destroy(&param->mutex_write);
 }
 
 int	ft_join_thread(t_philo *philo)
@@ -77,6 +76,8 @@ int	main(int argc, char **argv)
 	if (param.nb_philo == 1)
 	{
 		one_philo(philo);
+		destroy_mutex(&param, philo);
+		free(philo);
 		return (0);
 	}	
 	else
