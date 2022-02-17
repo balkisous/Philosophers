@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 10:31:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 16:31:56 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:01:22 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int			ft_launch_thread(t_philo *philo, int module);
 int			begin_my_philo(t_philo *philo, t_param *param);
 
 //routine.c
-void		execute_routine(t_philo *philo);
-void		print_status(char *action, t_philo *philo);
+int			execute_routine(t_philo *philo);
+int			print_status(char *action, t_philo *philo);
 
 //atoi.c
 int			ft_atoi(const char *nptr);

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:01:18 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/17 08:49:09 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 09:01:00 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	*routine(void *ph)
 	pthread_mutex_unlock(&philo->prm->mutex_death);
 	while (death == 0)
 	{
-		execute_routine(philo);
+		if (execute_routine(philo))
+			return (0);
 		pthread_mutex_lock(&philo->prm->mutex_death);
 		death = philo->prm->is_die;
 		pthread_mutex_unlock(&philo->prm->mutex_death);

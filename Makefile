@@ -15,7 +15,7 @@ HEADER = inc/philo.h
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra -pthread -g3 -fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra -pthread #-g3 -fsanitize=thread
 RM = rm -f
 
 .c.o:
