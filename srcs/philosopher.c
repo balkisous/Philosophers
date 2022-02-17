@@ -6,7 +6,7 @@
 /*   By: bben-yaa <bben-yaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:01:18 by bben-yaa          #+#    #+#             */
-/*   Updated: 2022/02/16 16:45:05 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2022/02/17 08:49:09 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,4 @@ int	begin_my_philo(t_philo *philo, t_param *param)
 	}
 	return (0);
 }
-//create the threads and launch it
+	//create the threads and launch it
